@@ -3,7 +3,6 @@ A simple and small plug in and play logging library in C.
 
 ## Getting Started
 Copy log.c and log.h into your project and have fun.
-If your project will be a library, it could be a good idea to change the namespace of all globals.
 
 ## Usage
 The following [example](example.c) shows how to use log.h:
