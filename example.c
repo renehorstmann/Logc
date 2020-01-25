@@ -1,13 +1,3 @@
-# Logc
-A simple and small plug in and play logging library in C.
-
-## Getting Started
-Copy log.c and log.h into your project and have fun.
-If your project will be a library, it could be a good idea to change the namespace of all globals.
-
-## Usage
-The following [example](example.c) shows how to use log.h:
-```c
 #include "log.h"
 
 int main() {
@@ -47,14 +37,3 @@ int main() {
     fclose(logfile);
 }
 
-
-```
-
-## Author
-
-* **René Horstmann**
-modified version of rxi
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
