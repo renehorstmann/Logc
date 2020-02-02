@@ -1,5 +1,6 @@
 # Logc
 A simple and small plug in and play logging library in C.
+Modified version of [rxi/log.c](https://github.com/rxi/log.c)
 
 ## Getting Started
 Copy log.c and log.h into your project and have fun.
@@ -52,7 +53,7 @@ int main() {
 ## Author
 
 * **René Horstmann**
-modified version of rxi
+* **[rxi](https://github.com/rxi)*
 
 ## License
 
