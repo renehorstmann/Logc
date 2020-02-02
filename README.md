@@ -53,7 +53,7 @@ int main() {
 ## Author
 
 * **René Horstmann**
-* **[rxi](https://github.com/rxi)*
+* **[rxi](https://github.com/rxi)**
 
 ## License
 
