@@ -1,3 +1,5 @@
+
+#define LOGC_LEADING_TEXT "[CustomTextInThisFile] "
 #include "log.h"
 
 int main() {
@@ -10,12 +12,9 @@ int main() {
     log_error("error msg");
     log_wtf("wtf msg");
 
-    // turn on leading text
-    log_set_leading_text("[LOG_LIB]");
-    log_info("log msg with leading text");
-
-    // turn off leading text
-    log_set_leading_text(NULL);
+    // if the macro LOGC_LEADING_TEXT is set, a custom string is placed before each log
+    //      see above
+    //      or the comment in CMakeLists.txt: add_definitions(-DLOGC_LEADING_TEXT="[CustomText] ")
 
     // all log macros are in printf style:
     log_debug("value: %d", 34);
@@ -36,4 +35,3 @@ int main() {
 
     fclose(logfile);
 }
-
