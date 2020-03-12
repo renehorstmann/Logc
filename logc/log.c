@@ -104,11 +104,11 @@ void log_base_(enum log_level level, const char *leading_text, const char *file,
         char buf[16];
         buf[strftime(buf, sizeof(buf), "%H:%M:%S", lt)] = '\0';
 #ifdef LOG_DO_NOT_USE_COLOR
-        fprintf(stderr, "%s%s %-5s %s:%d: ",
-                leading_text, buf, level_names[level], file, line);
+        fprintf(stderr, "%s %-5s %s:%d: %s",
+                buf, level_names[level], file, line, leading_text);
 #else
-        fprintf(stderr, LOGC_LEADING_TEXT "%s%s %s%-5s\x1b[0m \x1b[90m%s:%d:\x1b[0m ",
-                leading_text, buf, level_colors[level], level_names[level], file, line);
+        fprintf(stderr, LOGC_LEADING_TEXT "%s %s%-5s\x1b[0m \x1b[90m%s:%d:\x1b[0m %s",
+                buf, level_colors[level], level_names[level], file, line, leading_text);
 #endif
         va_start(args, format);
         vfprintf(stderr, format, args);
@@ -122,8 +122,8 @@ void log_base_(enum log_level level, const char *leading_text, const char *file,
         va_list args;
         char buf[32];
         buf[strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", lt)] = '\0';
-        fprintf(local.log_file, LOGC_LEADING_TEXT "%s%s %-5s %s:%d: ",
-                leading_text, buf, level_names[level], file, line);
+        fprintf(local.log_file, LOGC_LEADING_TEXT "%s %-5s %s:%d: %s",
+                buf, level_names[level], file, line, leading_text);
         va_start(args, format);
         vfprintf(local.log_file, format, args);
         va_end(args);
