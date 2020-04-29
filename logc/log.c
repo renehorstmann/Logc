@@ -65,28 +65,29 @@ static void unlock() {
 }
 
 
-void log_set_log_file(FILE *file) {
+void LogcNamespace(LOGC_NAMESPACE, _set_log_file)(FILE *file) {
     local.log_file = file;
 }
 
-void log_set_min_level(enum log_level level) {
+void LogcNamespace(LOGC_NAMESPACE, _set_min_level)(enum log_level level) {
     local.level = level;
 }
 
-void log_set_quiet(bool set) {
+void LogcNamespace(LOGC_NAMESPACE, _set_quiet)(bool set) {
     local.quiet = set;
 }
 
-void log_set_locking_function(log_lock_function fun) {
+void LogcNamespace(LOGC_NAMESPACE, _set_locking_function)(log_lock_function fun) {
     local.lock_function = fun;
 }
 
-void log_set_locking_function_user_data(void *user_data) {
+void LogcNamespace(LOGC_NAMESPACE, _set_locking_function_user_data)(void *user_data) {
     local.used_data = user_data;
 }
 
 
-void log_base_(enum log_level level, const char *leading_text, const char *file, int line, const char *format, ...) {
+void LogcNamespace(LOGC_NAMESPACE, _base_)(enum log_level level, const char *leading_text,
+                                              const char *file, int line, const char *format, ...) {
     if (level < local.level) {
         return;
     }

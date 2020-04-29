@@ -1,4 +1,3 @@
-
 #define LOGC_LEADING_TEXT "[CustomTextInThisFile] "
 #include "log.h"
 
@@ -21,15 +20,15 @@ int main() {
 
     // also print fo file:
     FILE *logfile = fopen("log.txt", "a");
-    log_set_log_file(logfile);
+    logc_set_log_file(logfile);
 
     log_info("also in file");
 
-    log_set_quiet(true);
+    logc_set_quiet(true);
 
     log_info("only in file");
 
-    log_set_min_level(LOG_WARN);
+    logc_set_min_level(LOG_WARN);
 
     log_info("this log will be discarded");
 

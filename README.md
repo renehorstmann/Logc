@@ -8,7 +8,6 @@ Copy log.c and log.h into your project and have fun.
 ## Usage
 The following [example](example.c) shows how to use log.h:
 ```c
-
 #define LOGC_LEADING_TEXT "[CustomTextInThisFile] "
 #include "log.h"
 
@@ -23,7 +22,7 @@ int main() {
     log_wtf("wtf msg");
 
     // if the macro LOGC_LEADING_TEXT is set, a custom string is placed before each log
-    //      see above 
+    //      see above
     //      or the comment in CMakeLists.txt: add_definitions(-DLOGC_LEADING_TEXT="[CustomText] ")
 
     // all log macros are in printf style:
@@ -31,21 +30,23 @@ int main() {
 
     // also print fo file:
     FILE *logfile = fopen("log.txt", "a");
-    log_set_log_file(logfile);
+    logc_set_log_file(logfile);
 
     log_info("also in file");
 
-    log_set_quiet(true);
+    logc_set_quiet(true);
 
     log_info("only in file");
 
-    log_set_min_level(LOG_WARN);
+    logc_set_min_level(LOG_WARN);
 
     log_info("this log will be discarded");
 
     fclose(logfile);
 }
+
 ```
+Its also possible to change the namespace logc_ with LOGC_NAMESPACE
 
 ## Author
 
