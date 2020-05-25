@@ -1,4 +1,5 @@
 #define LOGC_LEADING_TEXT "[CustomTextInThisFile] "
+#define LOGC_SOURCE
 #include "log.h"
 
 int main() {

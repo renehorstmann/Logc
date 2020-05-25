@@ -3,12 +3,18 @@ A simple and small plug in and play logging library in C.
 Modified version of [rxi/log.c](https://github.com/rxi/log.c)
 
 ## Getting Started
-Copy log.c and log.h into your project and have fun.
+### Option 1
+Copy log.h into your project and choose exactly 1 source file, in which 
+LOGC_SOURCE should be defined before including log.h (see the example below).
+### Option 2
+Copy log.h and log.c into your project and add log.c to your source files.
+
 
 ## Usage
 The following [example](example.c) shows how to use log.h:
 ```c
 #define LOGC_LEADING_TEXT "[CustomTextInThisFile] "
+#define LOGC_SOURCE // only 1 source file should set this! (or add log.c to your source files)
 #include "log.h"
 
 int main() {

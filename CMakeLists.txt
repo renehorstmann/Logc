@@ -10,4 +10,4 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-long-long -pedantic -Wno-unused-f
 
 include_directories(logc)
 
-add_executable(example example.c logc/log.c)
+add_executable(example example.c)
