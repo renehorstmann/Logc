@@ -11,6 +11,10 @@
 #ifndef LOGC_LOG_H
 #define LOGC_LOG_H
 
+//
+// Options:
+//
+
 // exactly one source file must define:
 // #define LOGC_SOURCE
 // before including log.h
@@ -23,6 +27,14 @@
 #ifndef LOGC_NAMESPACE
 #define LOGC_NAMESPACE logc
 #endif
+
+#ifndef LOGC_DEFAULT_FILE
+#define LOGC_DEFAULT_FILE stdout
+#endif
+
+//
+// Implementation:
+//
 
 #define LogcConcat(a, b) a ## b
 #define LogcNamespace(ns, name) LogcConcat(ns , name)
@@ -149,23 +161,23 @@ void LogcNamespace(LOGC_NAMESPACE, _base_)(enum log_level level, const char *lea
     time_t t = time(NULL);
     struct tm *lt = localtime(&t);
 
-    /* Log to stderr */
+    /* Log to LOGC_DEFAULT_FILE (stdout) */
     if (!local.quiet) {
         va_list args;
         char buf[16];
         buf[strftime(buf, sizeof(buf), "%H:%M:%S", lt)] = '\0';
 #ifdef LOG_DO_NOT_USE_COLOR
-        fprintf(stderr, "%s %-5s %s:%d: %s",
+        fprintf(LOGC_DEFAULT_FILE, "%s %-5s %s:%d: %s",
                 buf, level_names[level], file, line, leading_text);
 #else
-        fprintf(stderr, LOGC_LEADING_TEXT "%s %s%-5s\x1b[0m \x1b[90m%s:%d:\x1b[0m %s",
+        fprintf(LOGC_DEFAULT_FILE, LOGC_LEADING_TEXT "%s %s%-5s\x1b[0m \x1b[90m%s:%d:\x1b[0m %s",
                 buf, level_colors[level], level_names[level], file, line, leading_text);
 #endif
         va_start(args, format);
-        vfprintf(stderr, format, args);
+        vfprintf(LOGC_DEFAULT_FILE, format, args);
         va_end(args);
-        fprintf(stderr, "\n");
-        fflush(stderr);
+        fprintf(LOGC_DEFAULT_FILE, "\n");
+        fflush(LOGC_DEFAULT_FILE);
     }
 
     /* Log to file */
