@@ -54,6 +54,10 @@ int main() {
 ```
 Its also possible to change the namespace logc_ with LOGC_NAMESPACE
 
+## Python bindings:
+If you use Logc in a C Library, that will be exposed to python, a binding to logc is in log.py.
+Just change some lines at the top and have fun.
+
 ## Author
 
 * **René Horstmann**
