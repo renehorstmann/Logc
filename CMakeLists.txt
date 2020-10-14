@@ -11,3 +11,13 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-long-long -pedantic -Wno-unused-f
 include_directories(logc)
 
 add_executable(example example.c)
+
+
+add_library(log SHARED lib_example.c)
+
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/logc/log.py
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib_example.py
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
